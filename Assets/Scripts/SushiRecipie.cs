@@ -4,9 +4,9 @@ public class SushiRecipie : MonoBehaviour
 {
     private GameObject chooseIngredient;
     private string rightFood;
-    public GameObject ingredientRice;
-    public GameObject ingredientMeat;
-    public GameObject ingredientGreen;
+    private GameObject ingredientRice;
+    private GameObject ingredientMeat;
+    private GameObject ingredientGreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,7 +25,8 @@ public class SushiRecipie : MonoBehaviour
 
     void randomSushiRecipie()
     {
-        chooseIngredient = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount + 1)).gameObject;
+        chooseIngredient = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount)).gameObject;
+        Debug.Log("Early" + chooseIngredient);
         if (ingredientRice != null && ingredientMeat != null)
         {
             rightFood = "Green";
@@ -48,7 +49,7 @@ public class SushiRecipie : MonoBehaviour
 
     void findRightRecipie()
     {
-        if (chooseIngredient.GetComponent<sushi_script>().typeOfFood == rightFood)
+        if (chooseIngredient.GetComponent<giveIngredentTag>().FoodTag == rightFood)
         {
             giveValueToRecipie();
         }
