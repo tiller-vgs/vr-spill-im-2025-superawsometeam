@@ -53,7 +53,7 @@ public class SushiRecipie : MonoBehaviour
         {
             giveValueToRecipie();
         }
-        else
+        //else
         {
             randomSushiRecipie();
         }
