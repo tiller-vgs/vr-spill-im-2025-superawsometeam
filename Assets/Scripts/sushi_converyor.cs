@@ -35,7 +35,7 @@ public class sushi_converyor : MonoBehaviour
         {
             moving = new Vector3(0 + RotationPoint, 0, 1 - RotationPoint);
         }
-            
+        moving /= 5;
         var self_pos = gameObject.transform.position;
         //if (self_pos.x < 0 && self_pos.x > 0  &&  )
         {

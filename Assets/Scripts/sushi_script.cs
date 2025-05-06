@@ -13,7 +13,7 @@ public class sushi_script : MonoBehaviour
     {
         if (gameObject.transform.position.y > -1)
         {
-            gameObject.transform.position += new Vector3(0, -1, 0);
+            //gameObject.transform.position += new Vector3(0, -1, 0);
             Debug.Log("1");
         }
     }

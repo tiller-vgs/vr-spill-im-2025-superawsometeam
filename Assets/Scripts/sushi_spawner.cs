@@ -12,7 +12,7 @@ public class sushi_spawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnpos = sushi.transform.position;
+        //spawnpos = sushi.transform.position;
         
     }
 

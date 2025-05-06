@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class deleate_sushi : MonoBehaviour
+public class delete_sushi : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
