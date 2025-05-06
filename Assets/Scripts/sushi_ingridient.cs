@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class sushi_ingridient : MonoBehaviour
 {
-    public string WhatTypeIsThis;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public string WhatFoodIsThis;
+    public GameObject parentto;
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -18,8 +16,8 @@ public class sushi_ingridient : MonoBehaviour
     {
         
     }
-    public void MergeIntoThis()
+    public void MergeIntoThis(GameObject parenttwo)
     {
-
+        Debug.Log(gameObject.transform.parent = parenttwo.transform);
     }
 }
