@@ -20,7 +20,7 @@ public class sushi_spawner : MonoBehaviour
     {
         if (spawn)
         {
-            sushi = gameObject.transform.GetChild(Random.Range(0, 2)).gameObject;
+            sushi = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount+1)).gameObject;
             
             GameObject Spawned_sushi = Instantiate(sushi, spawnpos, Quaternion.identity);
             //allenemyes.Add(newPlatform);

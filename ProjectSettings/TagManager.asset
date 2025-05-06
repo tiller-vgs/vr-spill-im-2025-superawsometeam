@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - conveyor_strait
+  - conveyor_turn
+  - sushi
   layers:
   - Default
   - TransparentFX
