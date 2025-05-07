@@ -1933,10 +1933,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 218904103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Meat
+  WhatFoodIsThis: Meat
+  parentto: {fileID: 0}
 --- !u!1 &225847614
 GameObject:
   m_ObjectHideFlags: 0
@@ -4394,7 +4395,7 @@ GameObject:
   - component: {fileID: 500319204}
   - component: {fileID: 500319203}
   - component: {fileID: 500319202}
-  - component: {fileID: 500319201}
+  - component: {fileID: 500319205}
   m_Layer: 0
   m_Name: White Rice
   m_TagString: Untagged
@@ -4412,24 +4413,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25754, y: 0.25754, z: 0.25754}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 392880536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &500319201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500319199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FoodTag: Rice
 --- !u!65 &500319202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4504,6 +4492,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500319199}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &500319205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500319199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhatFoodIsThis: Rice
+  parentto: {fileID: 0}
 --- !u!1 &528032898
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,10 +6815,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 795539431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Green
+  WhatFoodIsThis: Green
+  parentto: {fileID: 0}
 --- !u!1001 &800151531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7641,10 +7644,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 845802325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Green
+  WhatFoodIsThis: Green
+  parentto: {fileID: 0}
 --- !u!1001 &849324472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8469,10 +8473,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 952897567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Green
+  WhatFoodIsThis: Green
+  parentto: {fileID: 0}
 --- !u!224 &956350312 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2397425259038431700, guid: fa5ef3b56cfeb4f4ba855cdf2610a578, type: 3}
@@ -10453,10 +10458,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246029616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Meat
+  WhatFoodIsThis: Meat
+  parentto: {fileID: 0}
 --- !u!1 &1255638673
 GameObject:
   m_ObjectHideFlags: 0
@@ -11602,10 +11608,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1427671155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Meat
+  WhatFoodIsThis: Meat
+  parentto: {fileID: 0}
 --- !u!1 &1451002449
 GameObject:
   m_ObjectHideFlags: 0
@@ -13955,10 +13962,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1768871342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Green
+  WhatFoodIsThis: Green
+  parentto: {fileID: 0}
 --- !u!1 &1783572213
 GameObject:
   m_ObjectHideFlags: 0
@@ -14548,10 +14556,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1891784592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d0f36be0c7b6b408e92b0046f4de90, type: 3}
+  m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodTag: Meat
+  WhatFoodIsThis: Meat
+  parentto: {fileID: 0}
 --- !u!1 &1894091299
 GameObject:
   m_ObjectHideFlags: 0
