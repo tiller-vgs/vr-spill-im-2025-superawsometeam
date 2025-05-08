@@ -49,7 +49,7 @@ public class MergeArea : MonoBehaviour
         }
         if (HaveGreen == true && HaveMeat == true && HaveRice == true)
         {
-            Debug.Log("starting merging");
+            //Debug.Log("starting merging");
             foreach (var item in MergingList)   
             {
                 Debug.Log(item.name+" "+MergingList);
@@ -69,7 +69,7 @@ public class MergeArea : MonoBehaviour
                     return;
                 }
             }
-            Debug.Log("reseting");
+            //Debug.Log("reseting");
             HaveGreen = false;
             HaveMeat = false;
             HaveRice = false;
@@ -77,7 +77,7 @@ public class MergeArea : MonoBehaviour
         }
         else
         {
-            Debug.Log("reseting");
+            //Debug.Log("reseting");
             HaveGreen = false;
             HaveMeat = false;
             HaveRice = false;

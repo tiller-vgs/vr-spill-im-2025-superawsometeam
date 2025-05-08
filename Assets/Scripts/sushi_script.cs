@@ -6,7 +6,7 @@ public class sushi_script : MonoBehaviour
     public List<int> IDS;
     void Start()
     {
-        gameObject.transform.position += new Vector3(0, 5, 0);
+        //gameObject.transform.position += new Vector3(0, 5, 0);
         IDS.Add(gameObject.transform.GetChild(1).GetComponent<sushi_ingridient>().id);
     }
     void Update()
