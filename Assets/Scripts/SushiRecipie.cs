@@ -49,7 +49,7 @@ public class SushiRecipie : MonoBehaviour
 
     void findRightRecipie()
     {
-        if (chooseIngredient.transform.GetChild(0).GetComponent<sushi_ingridient>().WhatFoodIsThis == rightFood)
+        if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == rightFood)
         {
             giveValueToRecipie();
         }
