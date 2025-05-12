@@ -4,18 +4,17 @@ using UnityEngine;
 public class sushi_script : MonoBehaviour
 {
     public List<int> IDS;
+    public int IngredentPlacement = 0;
+    public sushi_script SushiScript;
+    public sushi_ingridient IngredientScript;
+    public GameObject SushiIngredient;
     void Start()
     {
-        //gameObject.transform.position += new Vector3(0, 5, 0);
-        IDS.Add(gameObject.transform.GetChild(1).GetComponent<sushi_ingridient>().id);
+        SushiScript = gameObject.GetComponent<sushi_script>();
+        SushiIngredient = gameObject.transform.GetChild(IngredentPlacement).gameObject;
+        IngredientScript = SushiIngredient.GetComponent<sushi_ingridient>();
+        IDS.Add(IngredientScript.id);
     }
-    void Update()
-    {
-        if (gameObject.transform.position.y > -1)
-        {
-            //Debug.Log("1");
-        }
-    }// Quaternion rotation
     public void StraitConveyor(Vector3 moving)
     {
         //gameObject.transform.rotation = rotation;// rotation to convayer
@@ -35,9 +34,5 @@ public class sushi_script : MonoBehaviour
     public void removeID(int id)
     {
         IDS.Remove(id);
-    }
-    public void addids()
-    {
-
     }
 }

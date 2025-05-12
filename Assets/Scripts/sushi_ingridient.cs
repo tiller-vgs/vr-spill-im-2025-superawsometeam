@@ -11,10 +11,12 @@ public class sushi_ingridient : MonoBehaviour
     }
     public void MergeIntoThis(GameObject parenttwo)
     {
-        
-        gameObject.transform.parent.gameObject.GetComponent<sushi_script>().removeID(id);
+        var ParentScript = gameObject.transform.parent.gameObject.GetComponent<sushi_script>();
+        ParentScript.removeID(id);
         gameObject.transform.parent = parenttwo.transform;
-        var aa = gameObject.transform.parent.GetChild(1).position;
+
+        ParentScript = gameObject.transform.parent.gameObject.GetComponent<sushi_script>();
+        var aa = ParentScript.SushiIngredient.transform.position;
         var ee = new Vector3(0, 1, 0);
         if (WhatFoodIsThis == "Meat")
         {

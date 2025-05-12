@@ -10,36 +10,32 @@ public class MergeArea : MonoBehaviour
     public bool HaveRice;
     public bool HaveMeat;
     public bool HaveGreen;
-    public int IngredentPlacement = 1;
     void Update()
     {
-        var IDcheck = false;
         foreach (var item in MergeList)
         {
-            if (item.GetComponent<sushi_script>().IDS.Count < 1 || item.GetComponent<sushi_script>().IDS.Count >= 3)
+            var itemScript = item.GetComponent<sushi_script>();
+            var itemChild = itemScript.SushiIngredient;
+            var itemChildScript = itemScript.IngredientScript;
+            if (itemScript.IDS.Count < 1 || itemScript.IDS.Count >= 3)
             {
-                //if (!IDcheck)
-                //{
-                //    GiveIDTo = item;
-                //    IDcheck = true;
-                //}
                 MergeList.Remove(item);
                 Debug.Log("removed2 " + item + " from mergelist");
                 return;
             }
-            if (item.transform.GetChild(IngredentPlacement).GetComponent<sushi_ingridient>().WhatFoodIsThis == "Rice" && HaveRice==false)
+            if (itemChildScript.WhatFoodIsThis == "Rice" && HaveRice==false)
             {
                 HaveRice = true;
                 MergingList.Add(item);
                 Debug.Log("added R");
             }
-            else if (item.transform.GetChild(IngredentPlacement).GetComponent<sushi_ingridient>().WhatFoodIsThis == "Meat" && HaveMeat == false)
+            else if (itemChildScript.WhatFoodIsThis == "Meat" && HaveMeat == false)
             {
                 HaveMeat = true;
                 MergingList.Add(item);
                 main_ingreadient = item;
                 Debug.Log("added M");
-            } else if (item.transform.GetChild(IngredentPlacement).GetComponent<sushi_ingridient>().WhatFoodIsThis == "Green" && HaveGreen == false)
+            } else if (itemChildScript.WhatFoodIsThis == "Green" && HaveGreen == false)
             {
                 HaveGreen = true;
                 MergingList.Add(item);
@@ -53,19 +49,18 @@ public class MergeArea : MonoBehaviour
             foreach (var item in MergingList)   
             {
                 Debug.Log(item.name+" "+MergingList);
-                var ee = item;// MergingList[MergingList.Count - 1];
-                if (item==main_ingreadient)
+                var itemScript = item.GetComponent<sushi_script>();
+                var itemChild = item.transform.GetChild(itemScript.IngredentPlacement);
+                var itemChildScript = itemChild.GetComponent<sushi_ingridient>();
+
+                if (item!=main_ingreadient)
                 {
-                    
-                }
-                else
-                {
-                    main_ingreadient.GetComponent<sushi_script>().getID(ee.transform.GetChild(IngredentPlacement).GetComponent<sushi_ingridient>().id);
-                    ee.transform.GetChild(IngredentPlacement).GetComponent<sushi_ingridient>().MergeIntoThis(main_ingreadient);
-                    MergingList.Remove(ee);
-                    MergeList.Remove(ee);
-                    ee.GetComponent<sushi_script>().deleate_clone();
-                    
+                    main_ingreadient.GetComponent<sushi_script>().getID(itemChildScript.id);
+                    itemChildScript.MergeIntoThis(main_ingreadient);
+                    MergingList.Remove(item);
+                    MergeList.Remove(item);
+                    itemScript.deleate_clone();
+
                     return;
                 }
             }
@@ -86,8 +81,8 @@ public class MergeArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        var thing = other.transform.parent.gameObject;
-        //Debug.Log(thing.name);
+        var thing = other.transform.parent.parent.gameObject;
+        Debug.Log(thing.name);
         if (thing.GetComponent<sushi_script>().IDS.Count == 1)
         {
             MergeList.Add(thing);
@@ -100,7 +95,7 @@ public class MergeArea : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        var thing = other.transform.parent.gameObject;
+        var thing = other.transform.parent.parent.gameObject;
         MergeList.Remove(thing);
         Debug.Log("removed " + thing + " from mergelist");
     }
