@@ -3957,6 +3957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0211e0be126223f428cc3b077696b53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredients: []
   ShowPos: {x: 0, y: 0, z: 0}
 --- !u!1 &392911574
 GameObject:
@@ -14450,7 +14451,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1410772979
 Transform:
   m_ObjectHideFlags: 0
@@ -24709,6 +24710,6 @@ SceneRoots:
   - {fileID: 1703568386}
   - {fileID: 610590593}
   - {fileID: 392880536}
+  - {fileID: 1410772979}
   - {fileID: 1913656269}
   - {fileID: 794512039}
-  - {fileID: 1410772979}
