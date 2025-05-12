@@ -48,6 +48,7 @@ public class sushi_converyor : MonoBehaviour
         //Debug.Log(other.gameObject.name + " " + (other.gameObject.name == "ingredient"));
         if (other.gameObject.name == "ingredient")
         {
+            other.gameObject.transform.parent.GetComponent<sushi_script>().speed=speed;
             other.gameObject.transform.parent.GetComponent<sushi_script>().MovingList.Add(gameObject);
             Debug.Log("ee");
         }

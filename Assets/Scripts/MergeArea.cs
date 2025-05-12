@@ -20,26 +20,26 @@ public class MergeArea : MonoBehaviour
             if (itemScript.IDS.Count < 1 || itemScript.IDS.Count >= 3)
             {
                 MergeList.Remove(item);
-                Debug.Log("removed2 " + item + " from mergelist");
+                //Debug.Log("removed2 " + item + " from mergelist");
                 return;
             }
             if (itemChildScript.WhatFoodIsThis == "Rice" && HaveRice==false)
             {
                 HaveRice = true;
                 MergingList.Add(item);
-                Debug.Log("added R");
+                //Debug.Log("added R");
             }
             else if (itemChildScript.WhatFoodIsThis == "Meat" && HaveMeat == false)
             {
                 HaveMeat = true;
                 MergingList.Add(item);
                 main_ingreadient = item;
-                Debug.Log("added M");
+                //Debug.Log("added M");
             } else if (itemChildScript.WhatFoodIsThis == "Green" && HaveGreen == false)
             {
                 HaveGreen = true;
                 MergingList.Add(item);
-                Debug.Log("added G");
+                //Debug.Log("added G");
             }
             //return;
         }
@@ -48,7 +48,7 @@ public class MergeArea : MonoBehaviour
             //Debug.Log("starting merging");
             foreach (var item in MergingList)   
             {
-                Debug.Log(item.name+" "+MergingList);
+                //Debug.Log(item.name+" "+MergingList);
                 var itemScript = item.GetComponent<sushi_script>();
                 var itemChild = item.transform.GetChild(itemScript.IngredentPlacement);
                 var itemChildScript = itemChild.GetComponent<sushi_ingridient>();
@@ -81,22 +81,26 @@ public class MergeArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        var thing = other.transform.parent.parent.gameObject;
-        Debug.Log(thing.name);
-        if (thing.GetComponent<sushi_script>().IDS.Count == 1)
+        if (other.gameObject.name == "MergeCube")
         {
-            MergeList.Add(thing);
-            Debug.Log("added " + thing + " to mergelist");
-        }
-        else
-        {
-            Debug.Log("cannot add " + thing + "to mergelist");
+            var thing = other.transform.parent.gameObject;
+            //Debug.Log(thing.name);
+            var itemScript = thing.GetComponent<sushi_script>();
+            if (itemScript.IDS.Count >= 1 || itemScript.IDS.Count < 3)
+            {
+                MergeList.Add(thing);
+                //Debug.Log("added " + thing + " to mergelist");
+            }
+            else
+            {
+                //Debug.Log("cannot add " + thing + "to mergelist");
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        var thing = other.transform.parent.parent.gameObject;
+        var thing = other.transform.parent.gameObject;
         MergeList.Remove(thing);
-        Debug.Log("removed " + thing + " from mergelist");
+        //Debug.Log("removed " + thing + " from mergelist");
     }
 }
