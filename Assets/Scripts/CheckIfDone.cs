@@ -38,10 +38,10 @@ public class CheckIfDone : MonoBehaviour
                 Destroy(item);
                 points += 1;
                 Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
-                checklist.Clear();
-                checklist.Add(false); checklist.Add(false); checklist.Add(false);
                 return;
             }
+            checklist.Clear();
+            checklist.Add(false); checklist.Add(false); checklist.Add(false);
         }
     }
     private void OnTriggerEnter(Collider other)
