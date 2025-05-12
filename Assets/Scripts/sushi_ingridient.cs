@@ -31,6 +31,6 @@ public class sushi_ingridient : MonoBehaviour
             gameObject.transform.position = aa-ee;
         }
         //gameObject.transform.position = aa;
-        Debug.Log("moved and " + aa);
+        //Debug.Log("moved and " + aa);
     }
 }
