@@ -7,6 +7,12 @@ public class Countdown : MonoBehaviour
     public float RemainingTime = 60;
     public TMP_Text messageText;
 
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Update()
     {
         showCountdown();
@@ -26,6 +32,6 @@ public class Countdown : MonoBehaviour
 
     private void showCountdown()
     {
-        messageText.SetText(((int)RemainingTime).ToString());
+        messageText.SetText("Time: " + ((int)RemainingTime).ToString());
     }
 }
