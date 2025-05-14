@@ -30,6 +30,7 @@ public class sushi_ingridient : MonoBehaviour
         {
             gameObject.transform.position = aa-ee;
         }
+        gameObject.transform.parent.position += new Vector3(0, 5, 0);
         //gameObject.transform.position = aa;
         //Debug.Log("moved and " + aa);
     }
