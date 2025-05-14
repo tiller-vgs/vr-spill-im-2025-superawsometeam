@@ -5,9 +5,9 @@ public class sushi_spawner : MonoBehaviour
 {
     public GameObject sushi;
     public Vector3 spawnpos;
-    public bool spawn;
-    public int RandomNum;
     public Vector3 distance;
+    private float num;
+    public float PauseForSpawn;
     void Start()
     {
         spawnpos = gameObject.transform.position;
@@ -15,15 +15,19 @@ public class sushi_spawner : MonoBehaviour
 
     void Update()
     {
-        if (spawn)
-        {
-            sushi = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount+1)).gameObject;
-            
-            GameObject Spawned_sushi = Instantiate(sushi, spawnpos+distance, Quaternion.identity);
-            Spawned_sushi.SetActive(true);
-            spawn = false;
-            distance += new Vector3(-1, 0, 0);
-        }
+        num += 1*Time.deltaTime;
 
+        if (num >= PauseForSpawn && PauseForSpawn != 0)
+        {
+            num=0;
+            Spawn();
+        }
+    }
+    public void Spawn()
+    {
+        sushi = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount)).gameObject;
+        GameObject Spawned_sushi = Instantiate(sushi, spawnpos, Quaternion.identity);
+        Spawned_sushi.SetActive(true);
+        //distance += new Vector3(-1, 0, 0);
     }
 }

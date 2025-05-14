@@ -17,6 +17,7 @@ public class sushi_script : MonoBehaviour
         SushiIngredient = gameObject.transform.GetChild(IngredentPlacement).gameObject;
         IngredientScript = SushiIngredient.GetComponent<sushi_ingridient>();
         IDS.Add(IngredientScript.id);
+
     }
     private void Update()
     {

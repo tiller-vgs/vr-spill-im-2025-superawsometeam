@@ -26,7 +26,7 @@ public class SushiRecipie : MonoBehaviour
     }
     private void Prosesing()
     {
-        chooseIngredient = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount)).gameObject.GetComponent<sushi_script>().SushiIngredient;
+        chooseIngredient = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount)).GetChild(0).gameObject;
         if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == "Green")
         {
             if (ingredientGreen == null)

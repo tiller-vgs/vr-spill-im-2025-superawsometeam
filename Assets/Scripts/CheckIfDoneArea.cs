@@ -7,12 +7,14 @@ public class CheckIfDone : MonoBehaviour
     public GameObject Spawner;
     public List<GameObject> checking;
     private List<int> IDS;
-    private List<bool> checklist;
+    private List<bool> checklist = new List<bool> { false, false, false };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        checklist.Add(false); checklist.Add(false); checklist.Add(false);
+        //checklist.Add(false); 
+        //checklist.Add(false); 
+        //checklist.Add(false);
         points = 0;
     }
 
@@ -35,18 +37,19 @@ public class CheckIfDone : MonoBehaviour
             }
             if (num == 3)
             {
+                checking.Remove(item);
                 Destroy(item);
                 points += 1;
                 Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
+                checklist = new List<bool> { false, false, false };
                 return;
             }
-            checklist.Clear();
-            checklist.Add(false); checklist.Add(false); checklist.Add(false);
+            checklist = new List<bool> { false, false, false };
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "MergeCube")
+        if (other.gameObject.name == "ingredient")
         {
             var thing = other.transform.parent.gameObject;
             checking.Add(thing);

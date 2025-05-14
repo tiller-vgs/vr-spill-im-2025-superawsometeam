@@ -81,7 +81,7 @@ public class MergeArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "MergeCube")
+        if (other.gameObject.name == "ingredient")
         {
             var thing = other.transform.parent.gameObject;
             //Debug.Log(thing.name);
