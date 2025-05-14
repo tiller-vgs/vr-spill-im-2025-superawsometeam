@@ -56,11 +56,22 @@ public class MergeArea : MonoBehaviour
                 if (item!=main_ingreadient)
                 {
                     main_ingreadient.GetComponent<sushi_script>().getID(itemChildScript.id);
-                    itemChildScript.MergeIntoThis(main_ingreadient);
+                    //itemChildScript.MergeIntoThis(main_ingreadient);
                     MergingList.Remove(item);
                     MergeList.Remove(item);
                     itemScript.deleate_clone();
 
+                    return;
+                }
+                else
+                {
+                    main_ingreadient.GetComponent<sushi_script>().getID(itemChildScript.id);
+                    //itemChildScript.MergeIntoThis(main_ingreadient);
+                    MergingList.Remove(item);
+                    MergeList.Remove(item);
+                    itemScript.deleate_clone();
+                    GameObject Spawned_sushi = Instantiate(transform.GetChild(0).gameObject, transform.GetChild(0).position, Quaternion.identity);
+                    Spawned_sushi.SetActive(true);
                     return;
                 }
             }
