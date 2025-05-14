@@ -1,26 +1,31 @@
 using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
-    private int timerDown;
+    public float RemainingTime = 60;
+    public TMP_Text messageText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        timerDown = 60;
-        InvokeRepeating("Subtract", 1f, 1f);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log(timerDown);
+        showCountdown();
+        if (RemainingTime > 0)
+        {
+            RemainingTime -= Time.deltaTime;
+        }
+        else if (RemainingTime <= 0)
+        {
+            //spawn_restartbotton
+            Time.timeScale = 0f;
+        }
+
     }
 
-    void Subtract()
+
+
+    private void showCountdown()
     {
-        timerDown -= 1;
-        
+        messageText.SetText(((int)RemainingTime).ToString());
     }
 }
