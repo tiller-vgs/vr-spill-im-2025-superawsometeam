@@ -6,7 +6,6 @@ public class SushiRecipie : MonoBehaviour
 {
     private GameObject chooseIngredient;
     private string rightFood;
-    private GameObject ingredientRice;
     private GameObject ingredientMeat;
     private GameObject ingredientGreen;
     public List<GameObject> ingredients;
@@ -18,7 +17,6 @@ public class SushiRecipie : MonoBehaviour
     }
     public void MakeListForRecipe()
     {
-        ingredientRice = null;
         ingredientGreen = null;
         ingredientMeat = null;
         ingredients.Clear();
@@ -32,14 +30,6 @@ public class SushiRecipie : MonoBehaviour
             if (ingredientGreen == null)
             {
                 ingredientGreen = chooseIngredient;
-                ingredients.Add(chooseIngredient);
-            }
-        }
-        else if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == "Rice")
-        {
-            if (ingredientRice == null)
-            {
-                ingredientRice = chooseIngredient;
                 ingredients.Add(chooseIngredient);
             }
         }
@@ -57,7 +47,7 @@ public class SushiRecipie : MonoBehaviour
     }
     private void CheckIfDone()
     {
-        if (ingredientRice == null || ingredientMeat == null || ingredientGreen == null)
+        if (ingredientMeat == null || ingredientGreen == null)
         {
             Prosesing();
         }

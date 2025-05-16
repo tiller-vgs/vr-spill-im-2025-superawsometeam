@@ -1,29 +1,44 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class sushi_spawner : MonoBehaviour
 {
     public GameObject sushi;
     public Vector3 spawnpos;
-    public bool spawn;
+    public bool spawn = false;
     public int RandomNum;
-    public Vector3 distance;
+    private float timetilspawn = 1;
     void Start()
     {
-        spawnpos = gameObject.transform.position;
+       
     }
 
     void Update()
     {
-        if (spawn)
+        countdowntimer();
+        if (spawn == true)
         {
             sushi = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount+1)).gameObject;
-            
-            GameObject Spawned_sushi = Instantiate(sushi, spawnpos+distance, Quaternion.identity);
+            GameObject Spawned_sushi = Instantiate(sushi, spawnpos, Quaternion.identity);
             Spawned_sushi.SetActive(true);
             spawn = false;
-            distance += new Vector3(-1, 0, 0);
+            timetilspawn = 1;
+            
         }
-
+        
     }
+
+    private void countdowntimer()
+    {
+        if (timetilspawn > 0)
+        {
+            timetilspawn -= Time.deltaTime;
+        }
+        else if (timetilspawn <= 0)
+        {
+            spawn = true;
+        }
+    }
+
 }
