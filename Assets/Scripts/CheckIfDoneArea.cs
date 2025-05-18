@@ -5,6 +5,7 @@ public class CheckIfDone : MonoBehaviour
 {
     public int points;
     public GameObject Spawner;
+    public GameObject board;
     public List<GameObject> checking;
     private List<int> IDS;
     private List<bool> checklist = new List<bool> { false, false, false };
@@ -17,6 +18,7 @@ public class CheckIfDone : MonoBehaviour
         //checklist.Add(false);
         points = 0;
         Spawner = GameObject.Find("");//merge area
+        board = GameObject.Find("Board");//board
     }
 
     // Update is called once per frame
@@ -43,6 +45,8 @@ public class CheckIfDone : MonoBehaviour
                 points += 1;
                 Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
                 checklist = new List<bool> { false, false, false };
+                board.GetComponent<Countdown>().Morepoints = true;
+                board.GetComponent<Countdown>().RemainingTime += 10;
                 return;
             }
             checklist = new List<bool> { false, false, false };

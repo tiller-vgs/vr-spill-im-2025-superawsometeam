@@ -23,7 +23,6 @@ public class Countdown : MonoBehaviour
         showCountdown();
         countdowntimer();
         updateScore(); 
-        
     }
 
     private void countdowntimer()

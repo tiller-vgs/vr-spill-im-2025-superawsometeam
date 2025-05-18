@@ -62,10 +62,10 @@ public class SushiRecipie : MonoBehaviour
         }
         else
         {
-            var addpos = new Vector3(0, 0, 0);
+            var addpos = new Vector3(0, 0, 1);
             foreach (var item in ingredients)
             {
-                GameObject Spawned_sushi = Instantiate(item, ShowPos-new Vector3(0,0,0), Quaternion.identity);
+                GameObject Spawned_sushi = Instantiate(item, ShowPos-new Vector3(0,0,-1)+addpos, Quaternion.identity);
                 Spawned_sushi.SetActive(true);
                 
             }
