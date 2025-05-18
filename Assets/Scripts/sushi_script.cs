@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class sushi_script : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     public Vector3 moving;
     public List<int> IDS;
     public int IngredentPlacement = 0;

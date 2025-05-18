@@ -5,7 +5,7 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class sushi_converyor : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     public Vector3 moving;
     public string ee;
     public List<GameObject> MovingList;
