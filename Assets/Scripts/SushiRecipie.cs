@@ -8,6 +8,7 @@ public class SushiRecipie : MonoBehaviour
     private string rightFood;
     private GameObject ingredientMeat;
     private GameObject ingredientGreen;
+    private GameObject ingredientRice;
     public List<GameObject> ingredients;
     public Vector3 ShowPos;
 
@@ -41,21 +42,30 @@ public class SushiRecipie : MonoBehaviour
                 ingredients.Add(chooseIngredient);
             }
         }
+        else if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == "Rice")
+        {
+            if (ingredientRice == null)
+            {
+                ingredientRice = chooseIngredient;
+                ingredients.Add(chooseIngredient);
+            }
+        }
 
 
         CheckIfDone();
     }
     private void CheckIfDone()
     {
-        if (ingredientMeat == null || ingredientGreen == null)
+        if (ingredientMeat == null || ingredientGreen == null || ingredientRice == null)
         {
             Prosesing();
         }
         else
         {
+            var addpos = new Vector3(0, 0, 0);
             foreach (var item in ingredients)
             {
-                GameObject Spawned_sushi = Instantiate(item, ShowPos, Quaternion.identity);
+                GameObject Spawned_sushi = Instantiate(item, ShowPos-new Vector3(0,0,0), Quaternion.identity);
                 Spawned_sushi.SetActive(true);
                 
             }

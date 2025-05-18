@@ -16,6 +16,7 @@ public class CheckIfDone : MonoBehaviour
         //checklist.Add(false); 
         //checklist.Add(false);
         points = 0;
+        Spawner = GameObject.Find("");//merge area
     }
 
     // Update is called once per frame
