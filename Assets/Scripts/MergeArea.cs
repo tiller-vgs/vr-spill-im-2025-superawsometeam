@@ -11,6 +11,7 @@ public class MergeArea : MonoBehaviour
     public bool HaveGreen;
     public List<int> idlist;
     public GameObject SpawnedSushiParent;
+    public GameObject Spawned_sushi;
 
     void Update()
     {
@@ -46,36 +47,37 @@ public class MergeArea : MonoBehaviour
         }
         if (HaveGreen == true && HaveMeat == true)// && HaveRice == true)
         {
-            idlist.Clear();
-
+            Debug.Log("a");
+            var rannum = Random.Range(0, transform.childCount);
+            GameObject Spawned_sushi = Instantiate(transform.GetChild(0).gameObject, transform.GetChild(0).position, Quaternion.identity, SpawnedSushiParent.transform);
+            var ee = Spawned_sushi.GetComponent<sushi_script>();
+            ee.normalfood = false;
+            Spawned_sushi.SetActive(true);
             foreach (var item in MergingList)   
             {
                 var itemScript = item.GetComponent<sushi_script>();
                 var itemChildScript = itemScript.IngredientScript;
 
                 idlist.Add(itemChildScript.id);
-                Debug.Log("a" + itemChildScript.id);
+                //Debug.Log("a" + itemChildScript.id);
                 MergingList.Remove(item);
-                MergeList.Remove(item);
+                MergeList.Remove(item); 
                 itemScript.deleate_clone();
                 return;
             }
 
-            var rannum = Random.Range(0, transform.childCount);
-            GameObject Spawned_sushi = Instantiate(transform.GetChild(rannum).gameObject, transform.GetChild(rannum).position, Quaternion.identity, SpawnedSushiParent.transform);
-            Spawned_sushi.GetComponent<sushi_script>().normalfood = false;
-            Spawned_sushi.SetActive(true);
-            Spawned_sushi.GetComponent<sushi_script>().normalfood = false;
+            
 
-            Debug.Log(idlist.Count+"t1"+ Spawned_sushi.GetComponent<sushi_script>().IDS.Count); 
+            //Debug.Log(idlist.Count+"t1"+ Spawned_sushi.GetComponent<sushi_script>().IDS.Count); 
             foreach (var item in idlist)
             {
-                Debug.Log(item);
-                Spawned_sushi.GetComponent<sushi_script>().getID(item);
+                //Debug.Log(item);
+                ee.getID(item);
+                idlist.Remove(item);
+                return;
             }
             //Spawned_sushi.GetComponent<sushi_script>().Clear_IDS();
-            Spawned_sushi.GetComponent<sushi_script>().IDS = idlist;
-            Debug.Log(idlist.Count + "t2" + Spawned_sushi.GetComponent<sushi_script>().IDS.Count);
+            //Debug.Log(idlist.Count + "t2" + Spawned_sushi.GetComponent<sushi_script>().IDS.Count);
 
             HaveGreen = false;
             HaveMeat = false;

@@ -4732,7 +4732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhatFoodIsThis: 
+  WhatFoodIsThis: eeeee
   id: 0
   parentto: {fileID: 0}
 --- !u!1 &1245014286 stripped
@@ -7095,7 +7095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhatFoodIsThis: 
+  WhatFoodIsThis: eeeee
   id: 0
   parentto: {fileID: 0}
 --- !u!1 &1778097312
@@ -7155,6 +7155,7 @@ MonoBehaviour:
   HaveGreen: 0
   idlist: 
   SpawnedSushiParent: {fileID: 713528357}
+  Spawned_sushi: {fileID: 0}
 --- !u!65 &1778097315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7416,7 +7417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca48e7a3e1742ea46b4dc9b358108cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhatFoodIsThis: 
+  WhatFoodIsThis: eeeee
   id: 0
   parentto: {fileID: 0}
 --- !u!1 &1830438321

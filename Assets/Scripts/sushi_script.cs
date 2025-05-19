@@ -73,7 +73,7 @@ public class sushi_script : MonoBehaviour
     public void getID(int id)
     {
         IDS.Add(id);
-        Debug.Log("got id"+id);
+        //Debug.Log("got id"+id);
     }
     //public void removeID(int id)
     //{
