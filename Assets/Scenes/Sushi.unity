@@ -575,10 +575,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83987808}
+  - component: {fileID: 83987809}
   - component: {fileID: 83987812}
   - component: {fileID: 83987811}
   - component: {fileID: 83987810}
-  - component: {fileID: 83987809}
   m_Layer: 0
   m_Name: CheckIfDone
   m_TagString: Untagged
@@ -616,6 +616,8 @@ MonoBehaviour:
   restartbool: 0
   Spawner: {fileID: 1830438321}
   board: {fileID: 1417903798}
+  merge: {fileID: 1778097312}
+  SpawnedSushiParent: {fileID: 713528357}
   checking: []
 --- !u!65 &83987810
 BoxCollider:
@@ -7156,6 +7158,7 @@ MonoBehaviour:
   idlist: 
   SpawnedSushiParent: {fileID: 713528357}
   Spawned_sushi: {fileID: 0}
+  spawning_sushi: 0
 --- !u!65 &1778097315
 BoxCollider:
   m_ObjectHideFlags: 0

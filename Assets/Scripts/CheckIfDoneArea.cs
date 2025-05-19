@@ -6,6 +6,8 @@ public class CheckIfDone : MonoBehaviour
     public bool restartbool;
     public GameObject Spawner;
     public GameObject board;
+    public GameObject merge;
+    public GameObject SpawnedSushiParent;
     public List<GameObject> checking;
     private List<int> IDS;
     
@@ -41,9 +43,8 @@ public class CheckIfDone : MonoBehaviour
             {
                 checking.Remove(item);
                 Destroy(item);
-                Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
-                board.GetComponent<Countdown>().Morepoints = true;
-                board.GetComponent<Countdown>().RemainingTime += 10;
+                Check_Right_Sushi();
+                
                 return;
             }
         }
@@ -66,6 +67,23 @@ public class CheckIfDone : MonoBehaviour
         checking.Clear();
         board.GetComponent<Countdown>().Restart();
         Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
+        merge.GetComponent<MergeArea>().clear();
         restartbool = false;
+    }
+    public void Check_Right_Sushi()
+    {
+        Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
+        board.GetComponent<Countdown>().Right_Sushi();
+        merge.GetComponent<MergeArea>().clear();
+        var childnum = SpawnedSushiParent.transform.childCount-1;
+        while (childnum >= 0)
+        {
+            Debug.Log(SpawnedSushiParent.transform.childCount + " " + childnum + " " + (SpawnedSushiParent.transform.GetChild(0).GetComponent<sushi_script>().MovingList.Count == 0));
+            if (SpawnedSushiParent.transform.GetChild(childnum).GetComponent<sushi_script>().MovingList.Count == 0)
+            {
+                Destroy(SpawnedSushiParent.transform.GetChild(childnum).gameObject);
+            }
+            childnum -= 1;
+        }
     }
 }

@@ -27,7 +27,7 @@ public class Countdown : MonoBehaviour
     {
         showCountdown();
         countdowntimer();
-        updateScore(); 
+        //updateScore(); 
     }
 
     private void countdowntimer()
@@ -49,13 +49,10 @@ public class Countdown : MonoBehaviour
         }
     }
 
-    private void updateScore()
+    public void Right_Sushi()
     {
-        if (Morepoints == true)
-        {
-            Morepoints = false;
-            points += 100;
-        }
+        points += 100;
+        RemainingTime += 10;
     }
 
 
@@ -66,11 +63,10 @@ public class Countdown : MonoBehaviour
     }
     public void Restart()
     {
-        var num = 0;
-        while (num < SpawnedSushiParent.transform.childCount)
+        for (int i = 0; i < SpawnedSushiParent.transform.childCount; i++)
         {
-            SpawnedSushiParent.transform.GetChild(num).GetComponent<sushi_script>().deleate_clone();
-            num++;
+            SpawnedSushiParent.transform.GetChild(i).GetComponent<sushi_script>().deleate_clone();
+
         }
         Time.timeScale = 1f;
         RemainingTime = 60;

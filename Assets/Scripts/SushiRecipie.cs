@@ -22,10 +22,16 @@ public class SushiRecipie : MonoBehaviour
         ingredientGreen = null;
         ingredientMeat = null;
         ingredients.Clear();
-        foreach (var item in Spawned_sushi_List)
+        //Debug.Log(Spawned_sushi_List.Count);
+        if (Spawned_sushi_List.Count > 0)
         {
-            Destroy(item);
-            return;
+            for (int i = 0; i <= Spawned_sushi_List.Count; i++)
+            {
+                //Debug.Log(Spawned_sushi_List.Count + " uu");
+                var obj = Spawned_sushi_List[0];
+                Destroy(obj);
+                Spawned_sushi_List.Remove(obj);
+            }
         }
         Spawned_sushi_List = new List<GameObject> { };
         Prosesing();
@@ -72,7 +78,7 @@ public class SushiRecipie : MonoBehaviour
             {
                 GameObject Spawned_sushi = Instantiate(item, ShowPos + addpos, Quaternion.identity);
                 Spawned_sushi.SetActive(true);
-                Spawned_sushi.transform.rotation = Quaternion.Euler(90, 90, 0);
+                Spawned_sushi.transform.rotation = Quaternion.Euler(270, 90, 180);
                 Spawned_sushi_List.Add(Spawned_sushi);
                 addpos += new Vector3(0, 0, 1);
             }

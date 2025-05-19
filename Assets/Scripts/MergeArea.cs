@@ -12,6 +12,7 @@ public class MergeArea : MonoBehaviour
     public List<int> idlist;
     public GameObject SpawnedSushiParent;
     public GameObject Spawned_sushi;
+    public bool spawning_sushi=false;
 
     void Update()
     {
@@ -47,42 +48,33 @@ public class MergeArea : MonoBehaviour
         }
         if (HaveGreen == true && HaveMeat == true)// && HaveRice == true)
         {
-            Debug.Log("a");
-            var rannum = Random.Range(0, transform.childCount);
-            GameObject Spawned_sushi = Instantiate(transform.GetChild(0).gameObject, transform.GetChild(0).position, Quaternion.identity, SpawnedSushiParent.transform);
-            var ee = Spawned_sushi.GetComponent<sushi_script>();
-            ee.normalfood = false;
-            Spawned_sushi.SetActive(true);
-            foreach (var item in MergingList)   
+            if (!spawning_sushi)
             {
-                var itemScript = item.GetComponent<sushi_script>();
-                var itemChildScript = itemScript.IngredientScript;
+                spawning_sushi = true;
+                var rannum = Random.Range(0, transform.childCount);
+                Spawned_sushi = Instantiate(transform.GetChild(rannum).gameObject, transform.GetChild(rannum).position, Quaternion.identity, SpawnedSushiParent.transform);
+                start1(); 
+                start1();
 
-                idlist.Add(itemChildScript.id);
-                //Debug.Log("a" + itemChildScript.id);
-                MergingList.Remove(item);
-                MergeList.Remove(item); 
-                itemScript.deleate_clone();
-                return;
+
+
+
+                //Debug.Log(idlist.Count+"t1"+ Spawned_sushi.GetComponent<sushi_script>().IDS.Count);
+                for (global::System.Int32 i = 0; i < 2; i++)
+                {
+                    //Debug.Log("num" + idlist[0] + " idlistcount" + idlist.Count);
+                    Spawned_sushi.GetComponent<sushi_script>().getID(idlist[0]);
+                    idlist.Remove(idlist[0]);
+                }
+                //Spawned_sushi.GetComponent<sushi_script>().Clear_IDS();
+                //Debug.Log(idlist.Count + "t2" + Spawned_sushi.GetComponent<sushi_script>().IDS.Count);
+                spawning_sushi = false;
+                //Debug.Log("ww");
             }
-
-            
-
-            //Debug.Log(idlist.Count+"t1"+ Spawned_sushi.GetComponent<sushi_script>().IDS.Count); 
-            foreach (var item in idlist)
-            {
-                //Debug.Log(item);
-                ee.getID(item);
-                idlist.Remove(item);
-                return;
-            }
-            //Spawned_sushi.GetComponent<sushi_script>().Clear_IDS();
-            //Debug.Log(idlist.Count + "t2" + Spawned_sushi.GetComponent<sushi_script>().IDS.Count);
-
-            HaveGreen = false;
-            HaveMeat = false;
-            HaveRice = false;
-            MergingList = new List<GameObject>();
+                HaveGreen = false;
+                HaveMeat = false;
+                HaveRice = false;
+                MergingList = new List<GameObject>();
         }
         else
         {
@@ -116,5 +108,36 @@ public class MergeArea : MonoBehaviour
         var thing = other.transform.parent.gameObject;
         MergeList.Remove(thing);
         //Debug.Log("removed " + thing + " from mergelist");
+    }
+    private void start1()
+    {
+        //Debug.Log("a");
+        
+        var ee = Spawned_sushi.GetComponent<sushi_script>();
+        ee.normalfood = false;
+        Spawned_sushi.SetActive(true);
+        foreach (var item in MergingList)
+        {
+            var itemScript = item.GetComponent<sushi_script>();
+            var itemChildScript = itemScript.IngredientScript;
+
+            idlist.Add(itemChildScript.id);
+            //Debug.Log("a" + itemChildScript.id+" margecount"+MergingList.Count);
+            MergingList.Remove(item);
+            MergeList.Remove(item);
+            itemScript.deleate_clone();
+            return;
+        }
+    }
+    public void clear()
+    {
+        MergingList.Clear();
+        MergeList.Clear();
+        idlist.Clear();
+        Spawned_sushi=null;
+        spawning_sushi = false;
+        HaveGreen = false;
+        HaveMeat = false;
+        HaveRice = false;
     }
 }
