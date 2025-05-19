@@ -25,7 +25,7 @@ public class sushi_spawner : MonoBehaviour
     public void Spawn()
     {
         sushi = gameObject.transform.GetChild(Random.Range(0, gameObject.transform.childCount)).gameObject;
-        GameObject Spawned_sushi = Instantiate(sushi, transform.position, Quaternion.identity);
+        GameObject Spawned_sushi = Instantiate(sushi, spawnpos, Quaternion.identity);
         Spawned_sushi.GetComponent<sushi_script>().normalfood = true;
         Spawned_sushi.SetActive(true);
         Spawned_sushi.GetComponent<sushi_script>().normalfood = true;

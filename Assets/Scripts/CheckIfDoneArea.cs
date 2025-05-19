@@ -4,6 +4,7 @@ using UnityEngine;
 public class CheckIfDone : MonoBehaviour
 {
     public bool restartbool;
+    public bool newrestartbool;
     public GameObject Spawner;
     public GameObject board;
     public GameObject merge;
@@ -24,7 +25,11 @@ public class CheckIfDone : MonoBehaviour
         {
             Check_Restart();
         }
-        
+        if(newrestartbool)
+        {
+            Check_Right_Sushi();
+        }
+
         foreach (var item in checking)
         {
             var num = 0;
@@ -85,5 +90,6 @@ public class CheckIfDone : MonoBehaviour
             }
             childnum -= 1;
         }
+        newrestartbool = false;
     }
 }

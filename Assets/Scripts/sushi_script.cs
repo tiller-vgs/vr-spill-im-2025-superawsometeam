@@ -11,7 +11,7 @@ public class sushi_script : MonoBehaviour
     public sushi_ingridient IngredientScript;
     public GameObject SushiIngredient;
     public List<GameObject> MovingList;
-    private float time=0;
+    public float time=0;
     public bool normalfood;
     void Start()
     {
@@ -49,7 +49,7 @@ public class sushi_script : MonoBehaviour
                 moving = new Vector3(0 + (RotationPoint * speed), 0, speed - (RotationPoint * speed));
             }
             //moving /= 200;
-            var timepause = 0.005f;
+            var timepause = 0.0025f;
             if (time < timepause)
             {
                 time += Time.deltaTime;
