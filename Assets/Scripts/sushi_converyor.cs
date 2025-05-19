@@ -7,8 +7,6 @@ public class sushi_converyor : MonoBehaviour
 {
     public float speed;
     public Vector3 moving;
-    public string ee;
-    public List<GameObject> MovingList;
     
     void Update()
     {
@@ -50,7 +48,6 @@ public class sushi_converyor : MonoBehaviour
         {
             other.gameObject.transform.parent.GetComponent<sushi_script>().speed=speed;
             other.gameObject.transform.parent.GetComponent<sushi_script>().MovingList.Add(gameObject);
-            Debug.Log("ee");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -58,7 +55,6 @@ public class sushi_converyor : MonoBehaviour
         if (other.gameObject.name == "ingredient")
         {
             other.gameObject.transform.parent.GetComponent<sushi_script>().MovingList.Remove(gameObject);
-            Debug.Log("ee");
         }
     }
 }

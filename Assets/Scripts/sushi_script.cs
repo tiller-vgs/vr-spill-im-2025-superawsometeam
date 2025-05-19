@@ -11,21 +11,27 @@ public class sushi_script : MonoBehaviour
     public sushi_ingridient IngredientScript;
     public GameObject SushiIngredient;
     public List<GameObject> MovingList;
+    private float time=0;
+    public bool normalfood;
     void Start()
     {
         SushiScript = gameObject.GetComponent<sushi_script>();
         SushiIngredient = gameObject.transform.GetChild(IngredentPlacement).gameObject;
         IngredientScript = SushiIngredient.GetComponent<sushi_ingridient>();
-        IDS.Add(IngredientScript.id);
-
+        //Debug.Log(normalfood);
+        if (normalfood)
+        {
+            IDS.Add(IngredientScript.id);
+        }
+        
     }
     private void Update()
     {
         if (MovingList.Count >= 1)
         {
             var rotation = MovingList[MovingList.Count-1].transform.eulerAngles.y;
-            var PointHelp = (int)((rotation + 1) / 90);
-            var RotationPoint = (rotation - (PointHelp * 90)) / 90;
+            var PointHelp = (int)((rotation) / 90);
+            var RotationPoint = (rotation - (PointHelp * 90)) / 90 - 0.05f;
             if ((float)(PointHelp + 1) / 4 == (int)((PointHelp + 1) / 4))
             {
                 moving = new Vector3(-speed + (RotationPoint * speed), 0, 0 + (RotationPoint * speed));
@@ -42,14 +48,22 @@ public class sushi_script : MonoBehaviour
             {
                 moving = new Vector3(0 + (RotationPoint * speed), 0, speed - (RotationPoint * speed));
             }
-            moving /= 200;
-
-            GetComponent<sushi_script>().StraitConveyor(moving);
+            //moving /= 200;
+            var timepause = 0.005f;
+            if (time < timepause)
+            {
+                time += Time.deltaTime;
+            }
+            else
+            {
+                StraitConveyor(moving);
+                time -= timepause;
+            }
+            //Debug.Log(Time.deltaTime);
         }
     }
     public void StraitConveyor(Vector3 moving)
     {
-
         gameObject.transform.position += moving;
     }
     public void deleate_clone()
@@ -59,10 +73,15 @@ public class sushi_script : MonoBehaviour
     public void getID(int id)
     {
         IDS.Add(id);
-        //Debug.Log("got id");
+        Debug.Log("got id"+id);
     }
-    public void removeID(int id)
+    //public void removeID(int id)
+    //{
+    //    IDS.Remove(id);
+    //}
+    public void Clear_IDS()
     {
-        IDS.Remove(id);
+        IDS.Clear();
+        Debug.Log("w" + IDS.Count);
     }
 }

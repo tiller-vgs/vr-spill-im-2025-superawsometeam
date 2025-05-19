@@ -5,14 +5,10 @@ public class sushi_ingridient : MonoBehaviour
     public string WhatFoodIsThis;
     public int id;
     public GameObject parentto;
-    public void WantsToMerge()
-    {
-        
-    }
     public void MergeIntoThis(GameObject parenttwo)
     {
         var ParentScript = gameObject.transform.parent.gameObject.GetComponent<sushi_script>();
-        ParentScript.removeID(id);
+        //ParentScript.removeID(id);
         gameObject.transform.parent = parenttwo.transform;
 
         ParentScript = gameObject.transform.parent.gameObject.GetComponent<sushi_script>();
@@ -30,7 +26,7 @@ public class sushi_ingridient : MonoBehaviour
         {
             gameObject.transform.position = aa-ee;
         }
-        gameObject.transform.parent.position += new Vector3(0, 5, 0);
+        //gameObject.transform.parent.position += new Vector3(0, 5, 0);
         //gameObject.transform.position = aa;
         //Debug.Log("moved and " + aa);
     }

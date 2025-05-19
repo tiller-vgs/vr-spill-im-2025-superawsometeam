@@ -3,31 +3,30 @@ using UnityEngine;
 
 public class CheckIfDone : MonoBehaviour
 {
-    public int points;
+    public bool restartbool;
     public GameObject Spawner;
     public GameObject board;
     public List<GameObject> checking;
     private List<int> IDS;
-    private List<bool> checklist = new List<bool> { false, false, false };
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //checklist.Add(false); 
-        //checklist.Add(false); 
-        //checklist.Add(false);
-        points = 0;
-        Spawner = GameObject.Find("");//merge area
-        board = GameObject.Find("Board");//board
     }
 
     // Update is called once per frame
     void Update()
     {
-        var num = 0;
+        if (restartbool)
+        {
+            Check_Restart();
+        }
+        
         foreach (var item in checking)
         {
-            IDS=item.GetComponent<sushi_script>().IDS;
+            var num = 0;
+            IDS =item.GetComponent<sushi_script>().IDS;
             foreach (var CheckingIDs in IDS)
             {
                 foreach (var ingredient in Spawner.GetComponent<SushiRecipie>().ingredients)
@@ -38,18 +37,15 @@ public class CheckIfDone : MonoBehaviour
                     }
                 }
             }
-            if (num == 3)
+            if (num == Spawner.GetComponent<SushiRecipie>().ingredients.Count)
             {
                 checking.Remove(item);
                 Destroy(item);
-                points += 1;
                 Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
-                checklist = new List<bool> { false, false, false };
                 board.GetComponent<Countdown>().Morepoints = true;
                 board.GetComponent<Countdown>().RemainingTime += 10;
                 return;
             }
-            checklist = new List<bool> { false, false, false };
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -64,5 +60,12 @@ public class CheckIfDone : MonoBehaviour
     {
         var thing = other.transform.parent.gameObject;
         checking.Remove(thing);
+    }
+    public void Check_Restart()
+    {
+        checking.Clear();
+        board.GetComponent<Countdown>().Restart();
+        Spawner.GetComponent<SushiRecipie>().MakeListForRecipe();
+        restartbool = false;
     }
 }

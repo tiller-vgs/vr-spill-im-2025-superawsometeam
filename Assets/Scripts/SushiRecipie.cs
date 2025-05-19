@@ -11,6 +11,7 @@ public class SushiRecipie : MonoBehaviour
     private GameObject ingredientRice;
     public List<GameObject> ingredients;
     public Vector3 ShowPos;
+    private List<GameObject> Spawned_sushi_List = new List<GameObject> { };
 
     void Start()
     {
@@ -21,6 +22,12 @@ public class SushiRecipie : MonoBehaviour
         ingredientGreen = null;
         ingredientMeat = null;
         ingredients.Clear();
+        foreach (var item in Spawned_sushi_List)
+        {
+            Destroy(item);
+            return;
+        }
+        Spawned_sushi_List = new List<GameObject> { };
         Prosesing();
     }
     private void Prosesing()
@@ -42,32 +49,32 @@ public class SushiRecipie : MonoBehaviour
                 ingredients.Add(chooseIngredient);
             }
         }
-        else if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == "Rice")
-        {
-            if (ingredientRice == null)
-            {
-                ingredientRice = chooseIngredient;
-                ingredients.Add(chooseIngredient);
-            }
-        }
-
-
+        //else if (chooseIngredient.GetComponent<sushi_ingridient>().WhatFoodIsThis == "Rice")
+        //{
+        //    if (ingredientRice == null)
+        //    {
+        //        ingredientRice = chooseIngredient;
+        //        ingredients.Add(chooseIngredient);
+        //    }
+        //}
         CheckIfDone();
     }
     private void CheckIfDone()
     {
-        if (ingredientMeat == null || ingredientGreen == null || ingredientRice == null)
+        if (ingredientMeat == null || ingredientGreen == null)// || ingredientRice == null)
         {
             Prosesing();
         }
         else
         {
-            var addpos = new Vector3(0, 0, 1);
+            var addpos = new Vector3(0, 0, -1);
             foreach (var item in ingredients)
             {
-                GameObject Spawned_sushi = Instantiate(item, ShowPos-new Vector3(0,0,-1)+addpos, Quaternion.identity);
+                GameObject Spawned_sushi = Instantiate(item, ShowPos + addpos, Quaternion.identity);
                 Spawned_sushi.SetActive(true);
-                
+                Spawned_sushi.transform.rotation = Quaternion.Euler(90, 90, 0);
+                Spawned_sushi_List.Add(Spawned_sushi);
+                addpos += new Vector3(0, 0, 1);
             }
         }
     }
