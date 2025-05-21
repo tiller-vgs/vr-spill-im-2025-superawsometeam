@@ -46,7 +46,7 @@ public class CheckIfDone : MonoBehaviour
             }
             if (num == Spawner.GetComponent<SushiRecipie>().ingredients.Count)
             {
-                checking.Remove(item);
+                checking.Clear();
                 Destroy(item);
                 Check_Right_Sushi();
                 

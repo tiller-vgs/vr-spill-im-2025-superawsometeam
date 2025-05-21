@@ -49,7 +49,7 @@ public class sushi_script : MonoBehaviour
                 moving = new Vector3(0 + (RotationPoint * speed), 0, speed - (RotationPoint * speed));
             }
             //moving /= 200;
-            var timepause = 0.0025f;
+            var timepause = 0.005f;
             if (time < timepause)
             {
                 time += Time.deltaTime;

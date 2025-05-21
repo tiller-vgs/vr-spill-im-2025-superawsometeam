@@ -19,7 +19,7 @@ public class sushi_spawner : MonoBehaviour
         if (timetilspawn <= 0)
         {
             Spawn();
-            timetilspawn += 1;
+            timetilspawn += 1.5f;
         }
     }
     public void Spawn()
